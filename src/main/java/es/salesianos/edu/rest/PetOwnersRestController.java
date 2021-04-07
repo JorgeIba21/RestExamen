@@ -32,7 +32,7 @@ public class PetOwnersRestController {
 	List<LinkPetOwners> lstPetOwners = new ArrayList<LinkPetOwners>();
 	
 	@PostMapping(path = "/saveOwner")
-	public ResponseEntity<Owner> saveOwnerPost(String name, String dni) {
+	public ResponseEntity<Owner> saveOwnerPost(@RequestParam String name, @RequestParam String dni) {
 		Owner owner = new Owner();
 		owner.setName(name);
 		owner.setDni(dni);
@@ -41,7 +41,7 @@ public class PetOwnersRestController {
 		return new ResponseEntity(owner, HttpStatus.ACCEPTED);
 	}
 	@PostMapping(path = "/savePet")
-	public ResponseEntity<Owner> savePetPost(String name, String chip) {
+	public ResponseEntity<Owner> savePetPost(@RequestParam String name, @RequestParam String chip) {
 		Pet pet = new Pet();
 		pet.setName(name);
 		pet.setChip(chip);
@@ -61,7 +61,7 @@ public class PetOwnersRestController {
 	}
 	
 	@PostMapping(path = "/linkOwnerPet")
-	public ResponseEntity<Owner> saveLinkOwnerPetPost(Owner owner, Pet pet) {
+	public ResponseEntity<Owner> saveLinkOwnerPetPost(@RequestBody Owner owner, @RequestBody Pet pet) {
 		LinkPetOwners petOwners = new LinkPetOwners();
 		petOwners.setOwner(owner);
 		petOwners.setPet(pet);
